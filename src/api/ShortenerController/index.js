@@ -5,7 +5,7 @@ const { saveShortUrl } = require('../../db')
 const parseUrls = async (req, res) => {
   const { urls } = req.body;
   if (urls.length <= 0) {
-    throw new Error('You need to provide at least one url')
+    return res.status(500).send('You need to provide at least one url');
   }
 
   const userAgent = req.get('User-Agent');

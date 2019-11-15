@@ -1,6 +1,7 @@
 'use strict'
 
 const express = require('express');
+const cors = require('cors');
 const bodyParser = require('body-parser')
 require('dotenv').config();
 
@@ -8,6 +9,7 @@ const shortener = require('./src/api/index');
 
 const app = express();
 
+app.use(cors());
 app.use(bodyParser.json());
 app.use('/shortener', shortener);
 
