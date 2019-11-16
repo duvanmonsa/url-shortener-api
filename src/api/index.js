@@ -6,6 +6,7 @@ const router = express.Router();
 
 // Users
 router
+  .get('/:hash', ShortenerController.redirectToUrl)
   .post('/', ShortenerController.parseUrls);
 
 module.exports = router;

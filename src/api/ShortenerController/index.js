@@ -1,6 +1,6 @@
 const shortid = require('shortid');
 
-const { saveShortUrl } = require('../../db')
+const { saveShortUrl, getShortUrlByHash } = require('../../db')
 
 const parseUrls = async (req, res) => {
   const { urls } = req.body;
@@ -30,6 +30,17 @@ const parseUrls = async (req, res) => {
   })
   return res.json(newShorturls);
 }
+
+const redirectToUrl = async (req, res) => {
+  const { hash } = req.params;
+  const urlData = await getShortUrlByHash(hash);
+  if (!urlData) {
+    return res.status(500).send('The hash does not exist');
+  }
+
+  res.redirect(urlData.original_url);
+}
 module.exports = {
-  parseUrls
+  parseUrls,
+  redirectToUrl
 };

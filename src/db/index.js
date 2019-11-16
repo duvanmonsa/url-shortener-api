@@ -36,6 +36,19 @@ const saveShortUrl = async (newShortUrl) => {
   return shortUrl
 }
 
+const getShortUrlByHash = async (hash) => {
+  let db, shortUrl;
+  try {
+    db = await connectDB()
+    shortUrl = await db.collection('shortUrls').findOne({ hash })
+  } catch (error) {
+    console.error(error)
+    throw error
+  }
+  return shortUrl
+}
+
 module.exports = {
-  saveShortUrl
+  saveShortUrl,
+  getShortUrlByHash
 }
