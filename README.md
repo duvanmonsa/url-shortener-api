@@ -1,8 +1,8 @@
-# url-shortener-api
-Url Shortener API
+# Url Shortener API
 
-#### Setup your environment
-- [install Docker][docker]
+#### Install Docker
+
+- https://docs.docker.com/get-started
 
 ## Create .env file
 ```bash
@@ -23,4 +23,3 @@ $ npm install
 ```bash
 $ npm start
 ```
-
