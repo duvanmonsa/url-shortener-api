@@ -1,13 +1,17 @@
 # url-shortener-api
 Url Shortener API
 
-### before you use this api you need to have a mongodb running.
+#### Setup your environment
+- [install Docker][docker]
 
 ## Create .env file
 ```bash
-PORT=3000
-MONGO_URL=mongodb://localhost/shortener
-API_DOMAIN=https://skl.sh/
+$ cp .env.example .env
+```
+
+## Start your MongoDb
+```bash
+$ docker-compose up
 ```
 
 ## Instal dependencies
