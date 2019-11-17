@@ -23,3 +23,8 @@ $ npm install
 ```bash
 $ npm start
 ```
+
+## Run tests
+```bash
+$ npm test
+```

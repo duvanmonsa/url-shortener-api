@@ -4,8 +4,8 @@ const { saveShortUrl, getShortUrlByHash } = require('../../db')
 
 const parseUrls = async (req, res) => {
   const { urls } = req.body;
-  if (urls.length <= 0) {
-    return res.status(500).send('You need to provide at least one url');
+  if (!urls || urls.length <= 0) {
+    return res.status(500).send({ status: "error", result: 'You need to provide at least one url' });
   }
 
   const userAgent = req.get('User-Agent');
@@ -35,7 +35,7 @@ const redirectToUrl = async (req, res) => {
   const { hash } = req.params;
   const urlData = await getShortUrlByHash(hash);
   if (!urlData) {
-    return res.status(500).send('The hash does not exist');
+    return res.status(500).send({ status: "error", result: 'The hash does not exist' });
   }
 
   res.redirect(urlData.original_url);

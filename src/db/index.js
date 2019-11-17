@@ -12,7 +12,8 @@ const connectDB = async () => {
   let dbConnection, client
   try {
     client = await MongoClient.connect(mongoUrl, {
-      useNewUrlParser: true
+      useNewUrlParser: true,
+      useUnifiedTopology: true
     })
     dbConnection = client.db('shortener');
   } catch (err) {
